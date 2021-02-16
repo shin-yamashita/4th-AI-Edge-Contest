@@ -1,0 +1,4 @@
+*.o
+app/seg_train_annotations
+app/seg_train_images
+app/tensorflow

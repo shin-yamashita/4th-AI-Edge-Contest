@@ -1,0 +1,39 @@
+
+
+sv work axi_slave_bfm.sv
+verilog work sync_fifo.v
+
+sv work ../hdl/tfacc_memif.sv
+
+sv work ../hdl/acc/input_arb.sv
+sv work ../hdl/acc/input_cache.sv
+sv work ../hdl/acc/output_arb.sv
+sv work ../hdl/acc/output_cache.sv
+
+sv work ../hdl/acc/rd_cache_nk.sv
+sv work ../hdl/acc/tfacc_core.sv
+sv work ../hdl/acc/u8adrgen.sv
+sv work ../hdl/acc/u8mac.sv
+
+verilog work ../ip/ip_user_files/ipstatic/simulation/blk_mem_gen_v8_4.v
+
+verilog work ../ip/ip_user_files/ip/rdbuf2k/sim/rdbuf2k.v
+verilog work ../ip/ip_user_files/ip/rdbuf4k/sim/rdbuf4k.v
+verilog work ../ip/ip_user_files/ip/rdbuf8k/sim/rdbuf8k.v
+verilog work ../ip/ip_user_files/ip/rdbuf16k/sim/rdbuf16k.v
+verilog work ../ip/ip_user_files/ip/rdbuf32k/sim/rdbuf32k.v
+verilog work ../ip/ip_user_files/ip/ila_0/sim/ila_0.v
+
+verilog work ../ip/ip_user_files/ipstatic/simulation/fifo_generator_vlog_beh.v
+verilog work ../ip/ip_user_files/ipstatic/hdl/fifo_generator_v13_2_rfs.v
+verilog work ../ip/ip_user_files/ipstatic/hdl/axi_interconnect_v1_7_vl_rfs.v
+verilog work ../ip/ip_user_files/ip/axi_ic/sim/axi_ic.v
+
+#verilog work  ../ip/ila_0/sim/ila_0.v
+
+verilog work  /opt/Xilinx/Vivado/2019.2/data/verilog/src/glbl.v
+
+#sv work axi_master.sv
+
+sv work tb_tfacc_core.sv
+

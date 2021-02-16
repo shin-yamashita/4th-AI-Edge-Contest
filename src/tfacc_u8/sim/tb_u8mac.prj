@@ -1,0 +1,8 @@
+
+
+sv work ../hdl/acc/u8mac.sv
+
+verilog work  /opt/Xilinx/Vivado/2019.2/data/verilog/src/glbl.v
+
+sv work tb_u8mac.sv
+

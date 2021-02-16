@@ -1,0 +1,11 @@
+
+
+#sv work ../hdl/acc/divmod.sv
+sv work ../hdl/acc/u8mac.sv
+sv work ../hdl/acc/u8adrgen.sv
+
+verilog work  /opt/Xilinx/Vivado/2019.2/data/verilog/src/glbl.v
+
+#sv work sr_cpu_bfm.sv
+sv work tb_u8adrgen.sv
+
