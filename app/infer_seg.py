@@ -24,7 +24,7 @@ img_path = './'
 
 # Path to tflite graph
 parser = argparse.ArgumentParser(description='infer segmentation')
-parser.add_argument('-i', '--input',  default=img_path+'/seg_train_images', help="Input file dir")
+parser.add_argument('-i', '--input',  default=img_path+'/images', help="Input file dir")
 parser.add_argument('-o', '--output', default=img_path+'/infer_images', help="Output file dir")
 parser.add_argument('-a', '--annotation',  default=img_path+'/seg_train_annotations', help="annotation file dir")
 parser.add_argument('-c', '--cpu',      action='store_true', default=False, help="disable delegate")
@@ -183,7 +183,7 @@ if __name__ == '__main__':
 #      print("input:", img.shape)
 
       t0 = time.time()
-      img = img[68:1036,:]  # 上下計12% crop
+#      img = img[68:1036,:]  # 上下計12% crop
       img_bgr = cv2.resize(img, size)
 
       # convert bgr to rgb
@@ -206,7 +206,7 @@ if __name__ == '__main__':
           basename = os.path.splitext(os.path.basename(image_path))[0]
           primg_path = primgpath + '/' + basename + ".png"
 
-          segimg = cv2.resize(segments, (width,968), interpolation = cv2.INTER_NEAREST)
+          segimg = cv2.resize(segments, (width,height), interpolation = cv2.INTER_NEAREST)
           segimg_blk = np.concatenate([blk_top, segimg, blk_btm])
           img = Image.fromarray(segimg_blk, mode="P")
           img.putpalette(palette)
@@ -224,12 +224,13 @@ if __name__ == '__main__':
 
       else:
           segimg = label_to_color_image(segments)	# RGB label image
+          sh = int(600 * height / width)
           if(not ano_bgr is None):
             img2 = cv2.hconcat([img_bgr, cv2.cvtColor(segimg,cv2.COLOR_RGB2BGR), ano_bgr])
-            cv2.imshow('segmentation result', cv2.resize(img2, (600*3,377)))
+            cv2.imshow('segmentation result', cv2.resize(img2, (600*3,sh)))
           else:
             img2 = cv2.hconcat([img_bgr, cv2.cvtColor(segimg,cv2.COLOR_RGB2BGR)])
-            cv2.imshow('segmentation result', cv2.resize(img2, (600*2,377)))
+            cv2.imshow('segmentation result', cv2.resize(img2, (600*2,sh)))
 
           key = cv2.waitKey(0)
           if key == 27: # when ESC key is pressed break
