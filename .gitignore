@@ -1,4 +1,7 @@
 *.o
+*~
 app/seg_train_annotations
 app/seg_train_images
 app/tensorflow
+app/infer_images
+app/tflite_delegate/libmydelegate.so.1

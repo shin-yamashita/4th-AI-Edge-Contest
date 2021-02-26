@@ -29,6 +29,7 @@ parser.add_argument('-o', '--output', default=img_path+'/infer_images', help="Ou
 parser.add_argument('-a', '--annotation',  default=img_path+'/seg_train_annotations', help="annotation file dir")
 parser.add_argument('-c', '--cpu',      action='store_true', default=False, help="disable delegate")
 parser.add_argument('-q', '--quantize', default=True,  action='store_true', help="uint8 model")
+parser.add_argument('-I', '--I8',       default=False, action='store_true', help="int8 model")
 parser.add_argument('-f', '--float',    default=False, action='store_true', help="float model (cpu exec)")
 parser.add_argument('--eval',  default=False, action='store_true', help="eval iou")
 parser.add_argument('--test',  default=False, action='store_true', help="measure infer time")
@@ -38,6 +39,8 @@ args = parser.parse_args()
 ### Prepare TFlite interpreter
 if args.float:
   model = './tflite_graphs/seg_graph_f.tflite'
+elif args.I8:
+  model = './tflite_graphs/seg_graph_i8.tflite'
 else:
   model = './tflite_graphs/seg_graph_q.tflite'
 
@@ -183,7 +186,7 @@ if __name__ == '__main__':
 #      print("input:", img.shape)
 
       t0 = time.time()
-#      img = img[68:1036,:]  # 上下計12% crop
+      img = img[68:1036,:]  # 上下計12% crop
       img_bgr = cv2.resize(img, size)
 
       # convert bgr to rgb
