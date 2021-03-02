@@ -11,19 +11,19 @@
 
 詳細は [doc/レポート](doc/s_yamashita_report.pdf) 参照
 
-### ./app/ [推論実行アプリケーション](app/README.md)  
+### ./app/ [推論実行アプリケーション](app/)  
 
 - python で記述した推論アプリケーション。  
 - [deeplabv3+ mobilenetv3](http://download.tensorflow.org/models/deeplab_mnv3_small_cityscapes_trainfine_2019_11_15.tar.gz) をベースに今回の課題に合わせて転移学習し、[quantization aware training](https://www.tensorflow.org/model_optimization/guide/quantization/training?hl=ja) の後 uint8 量子化した tflite graph を含む。  
 
-### ./app/tflite_delegate/  [TFlite delegate interface](app/tflite_delegate/README.md)  
+### ./app/tflite_delegate/  [TFlite delegate interface](app/tflite_delegate/)  
 - 推論アプリから delegate API を介して C++ reference model または FPGA アクセラレータに実行委譲するインターフェース関数のソース。  
 - Conv2d, depthwiseConv2d の２種の演算を delegate する。
 - C++ reference model は tflite の [Tensor ごとの uint8 量子化と チャネルごとの int8 量子化](https://www.tensorflow.org/lite/performance/quantization_spec) で実装した。
 - FPGA アクセラレータは Tensor ごとの uint8 量子化のみに対応する。  
 
 
-### ./src/tfacc_u8/  [FPGA sources](src/tfacc_u8/README.md)  
+### ./src/tfacc_u8/  [FPGA sources](src/tfacc_u8/)  
 - アクセラレータの RTL ソース。
 - 論理シミュレーション環境、論理合成環境。
 
